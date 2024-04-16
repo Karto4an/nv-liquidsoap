@@ -1,0 +1,9 @@
+main_stream = "http://91.218.212.84:8000/nvrezerv.mp3"
+fallback_stream = "http://91.218.212.84:8000/radionv.mp3"
+
+main_source = mksafe(input.http(main_stream))
+fallback_source = mksafe(input.http(fallback_stream))
+
+radio = fallback([fallback_source,main_source])
+
+output.ao(fallible=true, radio)
